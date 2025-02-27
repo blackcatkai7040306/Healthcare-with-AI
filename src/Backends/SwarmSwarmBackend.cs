@@ -275,7 +275,7 @@ public class SwarmSwarmBackend : AbstractT2IBackend
 
     public async Task RunWithSession(Func<Task> run)
     {
-        try
+        try 
         {
             await run();
         }

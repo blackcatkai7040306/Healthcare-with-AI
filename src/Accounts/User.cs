@@ -92,6 +92,8 @@ public class User
     {
         lock (SessionHandlerSource.DBLock)
         {
+            String data = SessionHandlerSource.GenericData.FindById($"{UserID}///${dataname}///{name.ToLowerFast()}")?.Data;
+            Console.WriteLine(data);
             return SessionHandlerSource.GenericData.FindById($"{UserID}///${dataname}///{name.ToLowerFast()}")?.Data;
         }
     }

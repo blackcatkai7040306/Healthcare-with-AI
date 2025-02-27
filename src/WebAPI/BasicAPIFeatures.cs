@@ -425,7 +425,7 @@ public static class BasicAPIFeatures
         return new JObject() { ["success"] = true };
     }
 
-    public static HashSet<string> AcceptedAPIKeyTypes = ["stability_api", "civitai_api"];
+    public static HashSet<string> AcceptedAPIKeyTypes = ["stability_api", "civitai_api", "backend_api"];
 
     [API.APIDescription("User route to set an API key.",
         """
@@ -461,6 +461,8 @@ public static class BasicAPIFeatures
         [API.APIParameter("The key type ID, eg 'stability_api'.")] string keyType)
     {
         string updated = session.User.GetGenericData(keyType, "key_last_updated");
+        Console.Write(session.User);
+
         if (string.IsNullOrWhiteSpace(updated))
         {
             return new JObject() { ["status"] = "not set" };

@@ -834,19 +834,44 @@
                             <tr><th>API</th><th>Status</th><th>Actions</th><th>Link</th><th>Info</th></tr>
                             @foreach (UserUpstreamApiKeys.ApiKeyInfo keyInfo in UserUpstreamApiKeys.KeysByType.Values)
                             {
-                                <tr data-prefix="@keyInfo.JSPrefix" data-key="@keyInfo.KeyType">
-                                    <td><b>@keyInfo.Title</b></td>
+                               
+                                <tr data-prefix="@keyInfo.JSPrefix" data-key="@keyInfo.KeyType">                         
+                                   <td><b>@keyInfo.Title</b></td>
                                     <td><span id="@(keyInfo.JSPrefix)_key_status">(Unknown)</span></td>
+                               
                                     <td>
                                         <input type="text" id="@(keyInfo.JSPrefix)_api_key" placeholder="@keyInfo.Title API Key" autocomplete="off" oninput="apiHelpers['@keyInfo.KeyType'].onKeyInput()" />
                                         <button class="basic-button translate" id="@(keyInfo.JSPrefix)_key_submit" onclick="apiHelpers['@keyInfo.KeyType'].onSaveButton()" disabled autocomplete="off">Save</button>
                                         <button class="basic-button translate" id="@(keyInfo.JSPrefix)_key_remove" onclick="apiHelpers['@keyInfo.KeyType'].onRemoveButton()" disabled autocomplete="off">Remove</button>
                                     </td>
                                     <td><a href="@keyInfo.CreateLink" target="_blank" rel="noreferrer noopener">Go here to create a key</a></td>
-                                    <td>@keyInfo.InfoHtml</td>
+                                    <td>@keyInfo.InfoHtml</td>                  
+                                    
                                 </tr>
                             }
                         </table>
+                        <!-- <div class="card border-secondary mb-3 card-center-container">
+    <div class="card-header">API Key Management</div>
+    <div class="card-body">
+        <div class="btn-group btn-group-sm mb-2" role="group">
+            <input type="radio" class="btn-check" name="apiKeyBackend" id="ollamaKeyBtn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="ollamaKeyBtn">Ollama</label>
+            <input type="radio" class="btn-check" name="apiKeyBackend" id="openrouterKeyBtn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="openrouterKeyBtn">OpenRouter</label>
+            <input type="radio" class="btn-check" name="apiKeyBackend" id="openaiAPIKeyBtn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="openaiAPIKeyBtn">OpenAIAPI (local)</label>
+            <input type="radio" class="btn-check" name="apiKeyBackend" id="openaiKeyBtn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="openaiKeyBtn">OpenAI (ChatGPT)</label>
+            <input type="radio" class="btn-check" name="apiKeyBackend" id="anthropicApiBtn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="anthropicApiBtn">Anthropic (Claude)</label>
+        </div>
+        <div class="d-flex gap-2">
+            <input type="password" id="apiKeyInput" class="form-control" placeholder="Enter API key for selected backend">
+            <button id="saveApiKey" type="button" class="basic-button" onclick="saveApiKey()">Save</button>
+        </div>
+    </div>
+</div> -->
+                        
                     </div>
                 </div>
             </div>
